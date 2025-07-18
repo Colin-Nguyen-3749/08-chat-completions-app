@@ -11,7 +11,7 @@ let conversationHistory = [
 // Add event listener to handle form submission
 chatForm.addEventListener('submit', async (event) => {
   event.preventDefault(); // Prevent the form from refreshing the page
-  
+
   // Get the user's input from the form
   const userMessage = userInput.value;
   
@@ -22,7 +22,7 @@ chatForm.addEventListener('submit', async (event) => {
   conversationHistory.push({ role: 'user', content: userMessage });
   
   // Show loading message while waiting for response
-  responseContainer.textContent = 'Getting travel advice...';
+  responseContainer.textContent = 'I\'M THINKING HOLD ON';
   
   // Retrieve the API key from the secrets file
   const apiKey = await (await fetch('/secrets/apiKey')).text();
