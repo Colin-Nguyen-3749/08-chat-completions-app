@@ -37,7 +37,9 @@ chatForm.addEventListener('submit', async (event) => {
     // Send model details and full conversation history
     body: JSON.stringify({
       model: 'gpt-4o',
-      messages: conversationHistory
+      messages: conversationHistory,
+      max_completion_tokens: 200
+
     })
   });
   
