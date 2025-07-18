@@ -38,7 +38,8 @@ chatForm.addEventListener('submit', async (event) => {
     body: JSON.stringify({
       model: 'gpt-4o',
       messages: conversationHistory,
-      max_completion_tokens: 200
+      max_completion_tokens: 200,
+      temperature: 0.7 // Set the temperature for response variability
 
     })
   });
