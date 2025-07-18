@@ -1,1 +1,2 @@
+# Ignore secrets file to protect API keys
 secrets.js

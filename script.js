@@ -3,6 +3,9 @@ const chatForm = document.getElementById('chatForm');
 const userInput = document.getElementById('userInput');
 const responseContainer = document.getElementById('response');
 
+// Retrieve the API key from the secrets file
+const apiKey = await (await fetch('/secrets/apiKey')).text();
+
 async function main() {
   // Send a POST request to the OpenAI API
   const response = await fetch('https://api.openai.com/v1/chat/completions', {
