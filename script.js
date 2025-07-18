@@ -40,8 +40,30 @@ chatForm.addEventListener('submit', async (event) => {
       messages: conversationHistory
     })
   });
+  
+  // Check if the response was successful
+  if (!response.ok) {
+    console.error('API request failed:', response.status, response.statusText);
+    responseContainer.textContent = 'Sorry, I\'m having trouble connecting to the travel planning service. Please try again later.';
+    return;
+  }
+  
   // Parse and store the response data
-  const result = await response.json();
+  let result;
+  try {
+    result = await response.json();
+  } catch (error) {
+    console.error('Error parsing JSON:', error);
+    responseContainer.textContent = 'Sorry, I received an invalid response. Please try again.';
+    return;
+  }
+  
+  // Check if the response has the expected structure
+  if (!result.choices || !result.choices[0] || !result.choices[0].message) {
+    console.error('Unexpected response structure:', result);
+    responseContainer.textContent = 'Sorry, I received an unexpected response. Please try asking your question again.';
+    return;
+  }
   
   // Get the AI's response content
   const aiResponse = result.choices[0].message.content;
